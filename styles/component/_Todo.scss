@@ -1,0 +1,41 @@
+.di {
+    background: #e4e3e3;
+    padding: 4px;
+    width: 80%;
+    margin: auto;
+    border-radius: 8px;
+    .li {
+        background: #fbfcf8;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+        border-radius: 6px;
+        padding: 10px;
+        gap: 30px;
+        .checkbox {
+            background-color: #7043a9;
+            color: #7043a9;
+            height: 1.5cm;
+            width: 1.5cm;
+            display: flex;
+            flex-direction: row;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: red;
+            .tittle {
+                font-size: larger;
+                font-weight: 300;
+            }
+            .desc {
+                font-size: normal;
+                font-weight: normal;
+            }
+            .date {
+                font-size: x-small;
+            }
+        }
+    }
+}

@@ -8,6 +8,7 @@ const AddTodo = () => {
   const [desc, setdesc] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [date, setdate] = useState("");
+  
   const dispatch = useDispatch();
 
   const submitHandler = (e: any) => {
@@ -20,14 +21,14 @@ const AddTodo = () => {
   };
 
   return (
-    <div className={variables.Addmain}>
+    <div className="Addmain">
       <button onClick={() => setIsOpen(!isOpen)} className={variables.Addbtn}>
         Add Task
       </button>
       {isOpen && (
-        <form className={variables.form}>
+        <form className="form">
           <input
-            className={variables.Inptitle}
+            className="Inptitle"
             type="text"
             placeholder="Enter tittle here"
             value={tittle}
@@ -36,7 +37,7 @@ const AddTodo = () => {
             }}
           />
           <input
-            className={variables.Inpdesc}
+            className="Inpdesc"
             type="text"
             placeholder="Enter description here"
             value={desc}
@@ -44,7 +45,7 @@ const AddTodo = () => {
               setdesc(e.target.value);
             }}
           />
-          <button className={variables.Submit} onClick={submitHandler}>
+          <button className="Submit" onClick={submitHandler}>
             Submit
           </button>
         </form>
