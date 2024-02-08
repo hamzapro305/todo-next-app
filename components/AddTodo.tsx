@@ -7,12 +7,13 @@ const AddTodo = () => {
   const [tittle, settittle] = useState("");
   const [desc, setdesc] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [date, setdate] = useState("");
   const dispatch = useDispatch();
 
   const submitHandler = (e: any) => {
     e.preventDefault();
     if (!(tittle && desc)) return alert("Please fill out all fields!");
-    dispatch(addTodo({ tittle, desc }));
+    dispatch(addTodo({ tittle, desc, createdAt: new Date() }));
     settittle("");
     setdesc("");
     setIsOpen(false);

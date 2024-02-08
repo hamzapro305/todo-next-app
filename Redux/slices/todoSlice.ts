@@ -5,23 +5,24 @@ export interface todoSlice {
   // todos:[];
   id:string;
   tittle:string;
-  desc:string
+  desc:string,
+  createdAt: Date
 }
 
 const initialState = {
-  todos:[{id:"1" ,tittle:"hello world",desc:"assalamualaikum"}]
+  todos:[{id:"1" ,tittle:"hello world",desc:"assalamualaikum" , createdAt: new Date()}]
 }
 
 export const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    addTodo:(state,action:PayloadAction<
-      Pick<todoSlice, "tittle" |"desc">>) => {
+    addTodo:(state,action:PayloadAction<Partial<todoSlice>>) => {
       const todo ={
         id:nanoid(),
-        tittle: action.payload.tittle,
-        desc: action.payload.desc
+        tittle: action.payload.tittle ?? '',
+        desc: action.payload.desc ?? '',
+        createdAt: action.payload.createdAt ?? new Date()
       }
       state.todos.push(todo)
     },

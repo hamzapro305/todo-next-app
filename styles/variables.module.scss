@@ -40,7 +40,7 @@ $primary-color: #64ff00;
     width: 80%;
     margin: auto;
     flex-direction: column;
-    // padding-bottom: 1cm;
+
 }
 
 .Addbtn{
@@ -89,8 +89,20 @@ $primary-color: #64ff00;
     width: 80%;
     margin:auto;
     border-radius:8px ;
-    
-    
+}
+.checkbox{
+    background-color:#7043a9;
+    color: #7043a9;
+    height: 1.5cm;
+    width: 1.5cm;
+    display: flex;
+    flex-direction: row;
+
+}
+.box{
+    // background-color:#e4e3e3;
+    color: #7043a9;
+    size: 2cm;
 }
 .li{
     background:  #fbfcf8;
@@ -104,15 +116,17 @@ $primary-color: #64ff00;
     display: flex;
     flex-direction: column;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 2cm;
-    border: left 1px;
-    border-color:black;
+    background-color: red;
+    
 }
 .tittle{
     font-size: larger;
     font-weight: 300;
 }
 .desc{
-    font-size: small;
+    font-size: normal;
     font-weight: normal;
+}
+.date{
+    font-size: x-small;
 }
