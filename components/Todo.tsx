@@ -18,25 +18,30 @@ const Todo = () => {
   const getDate = () => {
     return date.toString();
   };
+  console.log("TODOS", todos);
 
   return (
     <div className="di">
-      {todos.map((todo) => (
+      {todos.map((todo, index) => (
         <li className="li" key={todo.id}>
-          <div className="checkbox-wrapper-42 make-center">
-            <input
-              id="cbx-42"
-              key={todo.id}
-              className="checkbox"
-              type="checkbox"
-              checked={todo.status === "completed"}
-              onClick={(e: any) => {
-                dispatch(completedTodo({ ...todo, status: e.target.checked }));
-              }}
-            />
+          <input
+            id="cbx-42"
+            key={todo.id}
+            className="checkbox"
+            type="checkbox"
+            // style={{ backgroundColor: "red" }}
+            checked={todo.status === "completed"}
+            onClick={(e: any) => {
+              dispatch(
+                completedTodo({ id: todo.id, status: e.target.checked })
+              );
+            }}
+          />
+          <label htmlFor="cbx-42" className="inputlabel"></label>
+          {/* <div className="checkbox-wrapper-42 make-center">
             <label className="cbx" htmlFor="cbx-42"></label>
             <label className="lbl" htmlFor="cbx-42"></label>
-          </div>
+          </div> */}
           <div className="container">
             <h1 className="tittle">{todo.tittle}</h1>
             <h1 className="desc">{todo.desc}</h1>
