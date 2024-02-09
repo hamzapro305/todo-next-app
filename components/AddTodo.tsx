@@ -8,7 +8,7 @@ const AddTodo = () => {
   const [desc, setdesc] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [date, setdate] = useState("");
-  
+
   const dispatch = useDispatch();
 
   const submitHandler = (e: any) => {
@@ -22,7 +22,7 @@ const AddTodo = () => {
 
   return (
     <div className="Addmain">
-      <button onClick={() => setIsOpen(!isOpen)} className={variables.Addbtn}>
+      <button onClick={() => setIsOpen(!isOpen)} className="Addbtn">
         Add Task
       </button>
       {isOpen && (
