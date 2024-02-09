@@ -14,6 +14,8 @@ const initialState = {
   todos:[{id:"1" ,tittle:"hello world",desc:"assalamualaikum" , createdAt: new Date() , status:"incompleted"}],
 }
 
+
+
 export const todoSlice = createSlice({
   name: 'todo',
   initialState,
@@ -33,6 +35,8 @@ export const todoSlice = createSlice({
     },
     completedTodo:(state,action)=>{
       state.todos=state.todos.map((todo)=>{
+        console.log("TOFD" , action.payload);
+        
         if (todo.id===action.payload.id){
           return {
             ...todo,
@@ -41,9 +45,23 @@ export const todoSlice = createSlice({
         }
         return todo  
       })
-    }
+    },
+    // updateTodo:(state,action)=>{
+    //   state.todos=state.todos.map((todo)=>{
+        
+    //     if (todo.id===action.payload.id){
+    //       return {
+    //         ...todo,
+    //         status: action.payload.status ? 'completed': 'incompleted'
+    //       }
+    //     }
+    //     return todo  
+    //   })
+    // }
+  
    
   },
+  
 })
 
 // Action creators are generated for each case reducer function
