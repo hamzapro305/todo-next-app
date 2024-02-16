@@ -4,6 +4,7 @@
     width: 80%;
     margin: auto;
     flex-direction: column;
+
     .Addbtn {
         background: #7043a9;
         padding: 10px;
@@ -19,13 +20,12 @@
     }
     
     .form {
-        background-color: #e4e3e3;
-        margin-bottom: 2px;
-        padding: 0.5cm;
+        background-color: #fbfcf8;
+        padding: 7px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         border-radius: 8px;
         .Inptitle {
             background-color: #fbfcf8;
@@ -41,11 +41,16 @@
         }
         .Submit {
             background: #7043a9;
-            padding: 10px;
+            padding: 2px;
             border-radius: 6px;
             font-weight: 800;
             color: #fbfcf8;
-            width: 20%;
+            width: 10%;
+            height: 80%;
+            margin-left: 10px;
+            margin-top: 5px;
+            // align-items: center;
+            // justify-content: center;
         }
     }
 }

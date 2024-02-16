@@ -12,15 +12,14 @@ import next from "../app/src/next.png";
 export default function Home() {
   return (
     <Provider store={store}>
-      <div className={variables.main}>
-        <h1 className={variables.heading}>TODO APP</h1>
-        <div className={variables.div}>
-          <Image src={test} alt="react logo" className={variables.img} />
-          <Image src={redux} alt="react logo" className={variables.img} />
-          <Image src={next} alt="react logo" className={variables.img} />
+      <div className="main">
+        <div className="pic">
+          <h1 className="heading">TODO APP</h1>
         </div>
-        <AddTodo />
-        <Todo />
+        <div className="wrap">
+          <AddTodo />
+          <Todo />
+        </div>
       </div>
     </Provider>
   );
