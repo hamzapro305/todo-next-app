@@ -1,7 +1,6 @@
-import { addTodo } from "@/Redux/slices/todoSlice";
+import { TodosActions } from "@/Redux/slices/todoSlice";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import variables from "../styles/variables.module.scss";
 // import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const AddTodo = () => {
@@ -15,7 +14,7 @@ const AddTodo = () => {
   const submitHandler = (e: any) => {
     e.preventDefault();
     if (!(tittle && desc)) return alert("Please fill out all fields!");
-    dispatch(addTodo({ tittle, desc, createdAt: new Date() }));
+    dispatch(TodosActions.addTodo({ tittle, desc, createdAt: (new Date()).getTime() }));
     settittle("");
     setdesc("");
     // setIsOpen(false);
