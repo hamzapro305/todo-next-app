@@ -1,20 +1,20 @@
+import { Item } from '@radix-ui/react-accordion';
 import { createSlice, nanoid } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 type todoSlice = {
-  // todos:[];
+  // todos:[]; 
   id:string;
   tittle:string;
   desc:string,
   createdAt: Date,
-  status : "completed" | "incompleted"
+  status : string
 }
 
 const initialState = {
   todos:[{id:"1" ,tittle:"hello world",desc:"assalamualaikum" , createdAt: new Date() , status:"incompleted"}],
+  filter :'all' 
 }
-
-
 
 export const todoSlice = createSlice({
   name: 'todo',
@@ -46,20 +46,15 @@ export const todoSlice = createSlice({
         return todo  
       })
     },
-    // updateTodo:(state,action)=>{
-    //   state.todos=state.todos.map((todo)=>{
-        
-    //     if (todo.id===action.payload.id){
-    //       return {
-    //         ...todo,
-    //         status: action.payload.status ? 'completed': 'incompleted'
-    //       }
-    //     }
-    //     return todo  
+    // filterTodo:(state,action)=>{
+    //   state.filteredTodos = state.todos.filter((Item)=>{
+    //     if (action.payload.status === "incompleted"){
+    //       return Item.status ==="incompleted"
+    //     }else if (action.payload.status === "completed"){  
+    //       return Item.status ==='completed'}
+    //     else{true}
     //   })
     // }
-  
-   
   },
   
 })

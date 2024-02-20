@@ -5,7 +5,10 @@ import { useDispatch } from "react-redux";
 import { completedTodo, removeTodo } from "@/Redux/slices/todoSlice";
 import { useAppSelector } from "@/Redux/Hooks";
 import variables from "../styles/variables.module.scss";
-import { MdDelete } from "react-icons/md";
+import { FaEllipsisH } from "react-icons/fa";
+
+// import { MdDelete } from "react-icons/md";
+import { RxCross2 } from "react-icons/rx";
 import { Checkbox } from "@nextui-org/react";
 import dynamic from "next/dynamic";
 import {
@@ -25,26 +28,54 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+// type todoSlice = {
+//   // todos:[];
+//   id: string;
+//   tittle: string;
+//   desc: string;
+//   createdAt: Date;
+//   status: string;
+// };
 
 const Todo = () => {
   const dispatch = useDispatch();
   const todos = useAppSelector((s) => s.todo.todos);
+  // const filter = useAppSelector((s) => s.todo.filter);
+
+  // const [filteredTodo, setFilteredTodo] = useState<todoSlice[]>([]);
 
   const [date, setDate] = useState(new Date());
-  const [comp, setcomp] = useState("_");
+  const [comp, setcomp] = useState("-");
   const [position, setPosition] = React.useState("bottom");
+
+  const handleFilter = (filter: string) => {
+    // if (filter === "all") {
+    //   setFilteredTodo(todos);
+    // } else {
+    //   const updatedFilteredTodo = todos.filter((f) => f.status === filter);
+    //   setFilteredTodo(updatedFilteredTodo);
+    // }
+  };
 
   const getDate = () => {
     return date.toString();
   };
-  console.log("TODOS", todos);
 
   return (
     <div className="di">
       {todos.map((todo, index) => (
         <li className="li" key={todo.id}>
           {/* <input
-            id="cbx-42"
             key={todo.id}
             className="checkbox"
             type="checkbox"
@@ -69,16 +100,7 @@ const Todo = () => {
           >
             {comp}
           </h1>
-
-          {/* <div className="container">
-            <h1 className="tittle">{todo.tittle}</h1>
-            <h1 className="desc">{todo.desc}</h1>
-            <p className="date" suppressHydrationWarning>
-              {getDate()}
-            </p>
-          </div> */}
-
-          <Accordion type="single" collapsible>
+          <Accordion type="single" collapsible className="contentcontainer">
             <AccordionItem value="item-1" className="container">
               <AccordionTrigger className="tittle">
                 {todo.tittle}
@@ -92,8 +114,10 @@ const Todo = () => {
             </AccordionItem>
           </Accordion>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline"> . . . </Button>
+            <DropdownMenuTrigger asChild className="dropdown">
+              <Button variant="ghost" className="btn">
+                <FaEllipsisH size={22} />
+              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
               <DropdownMenuLabel>Todo Status</DropdownMenuLabel>
@@ -108,24 +132,35 @@ const Todo = () => {
                 <DropdownMenuRadioItem value="incompleted">
                   pending
                 </DropdownMenuRadioItem>
-                {/* <DropdownMenuRadioItem value="right">
-                  Right
-                </DropdownMenuRadioItem> */}
               </DropdownMenuRadioGroup>
             </DropdownMenuContent>
           </DropdownMenu>
-
           <button
             onClick={() => {
               dispatch(removeTodo(todo));
             }}
           >
-            {<MdDelete size={22} />}
+            {/* {<MdDelete size={22} />} */}
+            {<RxCross2 size={22} />}
           </button>
         </li>
       ))}
+      <footer className="footer">
+        <h1>items left</h1>
+        <div className="pagination">
+          <h1>All</h1>
+          <h1>Active</h1>
+          <h1>Completed</h1>
+        </div>
+        <h1>clear completed</h1>
+      </footer>
     </div>
   );
 };
 
 export default Todo;
+{
+  /* <Button onClick={() => handleFilter("all")}>all</Button>
+<Button onClick={() => handleFilter("incompleted")}>active</Button>
+<Button onClick={() => handleFilter("completed")}>completed</Button> */
+}

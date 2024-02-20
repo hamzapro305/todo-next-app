@@ -1,48 +1,52 @@
 .di {
     background:#fbfcf8;
+    // background-color: red;
     padding: 4px;
     width: 80%;
     margin: auto;
     border-radius: 8px;
     .li {
         background: #fbfcf8;
-        // background-color: aqua;
         display:flex;
         justify-content:space-between;
-        margin: 15px;
-        border-radius: 6px;
-        // padding: 10px;
+        border-radius:20px;
+        // border-bottom-left-radius: 0px;
+        // border-bottom-right-radius: 0px;
+        // margin: 5px;
+        // gap: 15px;
+        margin-bottom: 5px;
+        margin-top: 5px;
         border-top: 0px;
         border-left: 0px;
         border-right: 0px;
         border-width: 1px;
         border-color:rgb(174, 174, 174);
-        // gap: 30px;
+        margin-left: 9px;
+        margin-right: 9px;
 
-        // #cbx-42{
-        //   width: 30px;
-        //   height: 30px;
-        //   margin-top: 15px ;
-        //   margin-right: 15px;
-        //   accent-color:#7043a9;
+        
+        .checkbox{
+            //   width: 30px;
+            //   height: 30px;
+            //   margin-top: 15px ;
+            //   margin-right: 15px;
+            //   accent-color:#7043a9;
         //   border-radius: 50%;
-        // //   padding-top: 20px;
-        // }
+        // background-color: yellow;
+        margin: 9px 0px 9px 9px;
+        font-size:23px;
+        font-weight: 500;
+        }
         }
         .contentcontainer{
             display: flex;
+            flex: 1;
+            // background-color: orangered;
         }
         .container {
-            display: flex;
-            flex-direction: column;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            background-color: #fbfcf8;
-            // justify-content: start;
-            // align-items: start;
-            // margin-right: 20cm;
             
             .tittle {
-                font-size:x-large;
+                font-size:23px;
                 font-weight: 500;
             }
             .desc {
@@ -53,11 +57,33 @@
                 font-size: x-small;
             }
         }
-        // .btncontainer{
-        //     background-color: red;
-        //     display: flex;
-        //     flex-direction: row;
-        // }
+        .dropdown{
+            // background-color: red;
+            margin-top: 5px;
+            .btn{
+                align-self: center;
+                
+
+            }
+        }
+        :hover{
+            background-color: rgb(249, 215, 250);
+        }
+        
+        .footer{
+            display: flex;
+            justify-content: space-between;
+            // margin-left: 10px;
+            // margin-right: 10px;
+            margin: 15px;
+            color: rgb(73, 72, 72);
+            font-weight: 600;
+            
+            .pagination{
+                display: flex;
+                gap: 1cm;
+            }
+        }
     }
 
     
