@@ -33,15 +33,20 @@ const Todo = ({ todo }: PropType) => {
 
 	const dispatch = useDispatch();
 
-	const setStatus = () => {
-		dispatch(TodosActions.setTodo(
-			
-		))
+	const setStatus = (status: TodoType["status"]) => {
+		console.log(status)
+		dispatch(TodosActions.setTodo({
+			id: todo.id,
+			todo: {
+				...todo,
+				status: status
+			}
+		}))
 	}
 
 	return (
 		<li className="li">
-			<h1 className="checkbox">{status === "completed" ? "tick" : "-"}</h1>
+			<h1 className="checkbox">{todo.status === "completed" ? "tick" : "-"}</h1>
 			<Accordion type="single" collapsible className="contentcontainer">
 				<AccordionItem value="item-1" className="container">
 					<AccordionTrigger className="tittle">
@@ -65,8 +70,8 @@ const Todo = ({ todo }: PropType) => {
 					<DropdownMenuLabel>Todo Status</DropdownMenuLabel>
 					<DropdownMenuSeparator />
 					<DropdownMenuRadioGroup
-						value={status}
-						onValueChange={(value) => }
+						value={todo.status}
+						onValueChange={(value) => setStatus(value as TodoType["status"])}
 					>
 						<DropdownMenuRadioItem value="completed">
 							completed

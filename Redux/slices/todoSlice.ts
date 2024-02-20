@@ -40,13 +40,13 @@ export const todoSlice = createSlice({
 			state.filter = action.payload
 		},
 		setTodo: (state, action: PayloadAction<Partial<{ id: string, todo: TodoType }>>) => {
-			state.todos.map(todo => {
+			state.todos = state.todos.slice().map(todo => {
 				if (todo.id === action.payload.id) {
-					return action.payload
+					return action.payload.todo
 				} else {
-					todo
+					return todo
 				}
-			})
+			}) as TodoSliceInitalStateType["todos"]
 		}
 	},
 
