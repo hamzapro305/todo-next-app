@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/Redux/Hooks";
 import Todo from "./Todo"
 import { TodoSliceInitalStateType, TodoType, TodosActions } from "@/Redux/slices/todoSlice";
+import { motion } from "framer-motion";
 
 const AllTodos = () => {
     const todos = useAppSelector((s) => s.todo.todos);
@@ -29,9 +30,18 @@ const AllTodos = () => {
             <footer className="footer">
                 <h1>items left</h1>
                 <div className="pagination">
-                    <button onClick={() => changeFilter("all")}>All</button>
-                    <button onClick={() => changeFilter("incompleted")}>Active</button>
-                    <button onClick={() => changeFilter("completed")}>Completed</button>
+                    <button onClick={() => changeFilter("all")}>
+                        <span>All</span>
+                        {filter === "all" && <motion.div layoutId="buttonBG" className="bg"></motion.div>}
+                    </button>
+                    <button onClick={() => changeFilter("incompleted")}>
+                        <span>Active</span>
+                        {filter === "incompleted"  && <motion.div layoutId="buttonBG" className="bg"></motion.div>}
+                    </button>
+                    <button onClick={() => changeFilter("completed")}>
+                        <span>Completed</span>
+                        {filter === "completed" && <motion.div layoutId="buttonBG" className="bg"></motion.div>}
+                    </button>
                 </div>
                 <h1>clear completed</h1>
             </footer>
