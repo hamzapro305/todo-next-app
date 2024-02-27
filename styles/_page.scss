@@ -1,0 +1,42 @@
+
+.main {
+    // background: #fbfcf8;
+    // background-color: aquamarine;
+    // display: flex;
+    // flex-direction: column;
+    .pic{
+        background-image:url(../app/src/mountain.jpeg);
+        // background-image: linear-gradient(
+        //     rgba(157, 0, 255, 0.762), rgba(32, 139, 232, 0.71)),
+        //           url(../app/src/mountain.jpeg);
+        // flex: 1;
+        margin: 1cm;
+        border-radius: 20px;
+        height: 400px;
+        background-size: cover;
+    }
+    .wrap{
+        position: relative;
+        bottom: 250px;
+        z-index: 1;
+    }
+}
+
+.heading {
+    color: white;
+    font-size: 15mm;
+    padding-top: 5px;
+    font-weight: 900;
+    text-align:center;
+    padding-top: 2cm;
+    padding-right: 19cm;
+}
+.div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+

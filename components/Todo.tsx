@@ -2,64 +2,95 @@
 
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { completedTodo, removeTodo } from "@/Redux/slices/todoSlice";
-import { useAppSelector } from "@/Redux/Hooks";
-import variables from "../styles/variables.module.scss";
-import { MdDelete } from "react-icons/md";
-import { Checkbox } from "@nextui-org/react";
-import dynamic from "next/dynamic";
+import { TodoType, TodosActions } from "@/Redux/slices/todoSlice";
+import { FaEllipsisH } from "react-icons/fa";
 
-const Todo = () => {
-  const dispatch = useDispatch();
-  const todos = useAppSelector((s) => s.todo.todos);
+// import { MdDelete } from "react-icons/md";
+import { RxCross2 } from "react-icons/rx";
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 
-  const [date, setDate] = useState(new Date());
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuLabel,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-  const getDate = () => {
-    return date.toString();
-  };
-  console.log("TODOS", todos);
+type PropType = {
+	todo: TodoType
+}
 
-  return (
-    <div className="di">
-      {todos.map((todo, index) => (
-        <li className="li" key={todo.id}>
-          <input
-            id="cbx-42"
-            key={todo.id}
-            className="checkbox"
-            type="checkbox"
-            // style={{ backgroundColor: "red" }}
-            checked={todo.status === "completed"}
-            onClick={(e: any) => {
-              dispatch(
-                completedTodo({ id: todo.id, status: e.target.checked })
-              );
-            }}
-          />
-          <label htmlFor="cbx-42" className="inputlabel"></label>
-          {/* <div className="checkbox-wrapper-42 make-center">
-            <label className="cbx" htmlFor="cbx-42"></label>
-            <label className="lbl" htmlFor="cbx-42"></label>
-          </div> */}
-          <div className="container">
-            <h1 className="tittle">{todo.tittle}</h1>
-            <h1 className="desc">{todo.desc}</h1>
-            <p className="date" suppressHydrationWarning>
-              {getDate()}
-            </p>
-          </div>
-          <button
-            onClick={() => {
-              dispatch(removeTodo(todo));
-            }}
-          >
-            {<MdDelete size={22} />}
-          </button>
-        </li>
-      ))}
-    </div>
-  );
+const Todo = ({ todo }: PropType) => {
+
+	const dispatch = useDispatch();
+
+	const setStatus = (status: TodoType["status"]) => {
+		console.log(status)
+		dispatch(TodosActions.setTodo({
+			id: todo.id,
+			todo: {
+				...todo,
+				status: status
+			}
+		}))
+	}
+
+	return (
+		<li className="li">
+			<h1 className="checkbox">{todo.status === "completed" ? "tick" : "-"}</h1>
+			<Accordion type="single" collapsible className="contentcontainer">
+				<AccordionItem value="item-1" className="container">
+					<AccordionTrigger className="tittle">
+						{todo?.tittle}
+					</AccordionTrigger>
+					<AccordionContent className="desc">
+						{todo?.desc}
+						<p className="date" suppressHydrationWarning>
+							{(new Date(todo.createdAt)).toString()}
+						</p>
+					</AccordionContent>
+				</AccordionItem>
+			</Accordion>
+			<DropdownMenu>
+				<DropdownMenuTrigger asChild className="dropdown">
+					<Button variant="ghost" className="btn">
+						<FaEllipsisH size={22} />
+					</Button>
+				</DropdownMenuTrigger>
+				<DropdownMenuContent className="w-56">
+					<DropdownMenuLabel>Todo Status</DropdownMenuLabel>
+					<DropdownMenuSeparator />
+					<DropdownMenuRadioGroup
+						value={todo.status}
+						onValueChange={(value) => setStatus(value as TodoType["status"])}
+					>
+						<DropdownMenuRadioItem value="completed">
+							completed
+						</DropdownMenuRadioItem>
+						<DropdownMenuRadioItem value="incompleted">
+							pending
+						</DropdownMenuRadioItem>
+					</DropdownMenuRadioGroup>
+				</DropdownMenuContent>
+			</DropdownMenu>
+			<button
+				onClick={() => {
+					dispatch(TodosActions.removeTodo(todo));
+				}}
+			>
+				<RxCross2 size={22} />
+			</button>
+		</li>
+	);
 };
 
 export default Todo;

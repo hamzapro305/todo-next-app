@@ -1,44 +1,80 @@
 .di {
-    background: #e4e3e3;
+    background: #fbfcf8;
+    // background-color: red;
     padding: 4px;
     width: 80%;
     margin: auto;
     border-radius: 8px;
     .li {
         background: #fbfcf8;
+        list-style: none;
         display: flex;
-        justify-content: space-between;
-        margin: 20px;
-        border-radius: 6px;
-        padding: 10px;
-        // gap: 30px;
+        align-items: center;
+        gap: 10px;
+        .contentcontainer {
+        }
 
-        #cbx-42{
-          width: 30px;
-          height: 30px;
-          margin-top: 15px ;
-          margin-right: 15px;
-          accent-color:#7043a9;
-          border-radius: 50%;
+        .checkbox {
+            margin: 9px 0px 9px 9px;
+            font-size: 23px;
+            font-weight: 500;
         }
+    }
+    .contentcontainer {
+        display: flex;
+        flex: 1;
+        // background-color: orangered;
+    }
+    .container {
+        .tittle {
+            font-size: 23px;
+            font-weight: 500;
         }
-        .container {
-            display: flex;
-            flex-direction: column;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            background-color: #fbfcf8;
-            .tittle {
-                font-size: larger;
-                font-weight: 300;
-            }
-            .desc {
-                font-size: normal;
-                font-weight: normal;
-            }
-            .date {
-                font-size: x-small;
-            }
+        .desc {
+            font-size: normal;
+            font-weight: normal;
+        }
+        .date {
+            font-size: x-small;
+        }
+    }
+    .dropdown {
+        // background-color: red;
+        margin-top: 5px;
+        .btn {
+            align-self: center;
         }
     }
 
-    
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        // margin-left: 10px;
+        // margin-right: 10px;
+        margin: 15px;
+        color: rgb(73, 72, 72);
+        font-weight: 600;
+
+        .pagination {
+            display: flex;
+            gap: 1cm;
+
+            button {
+                position: relative;
+                padding: 4px 10px;
+                .bg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: red;
+                }
+                span {
+                    position: relative;
+                    z-index: 5;
+                }
+            }
+        }
+    }
+}
